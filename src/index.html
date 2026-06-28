@@ -1,5 +1,5 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@
         <p class="text-2xl font-semibold">Add Tasks to Kram</p>
         </div>
 
-        <div class="search-cont flex items-center justify-center gap-5 md:gap-8 py-4">
+        <div class="search-cont flex items-center justify-center gap-5 md:gap-8 py-4 mb-2 md:mb-6">
             <input type="text" placeholder="Enter a Task..." id="input-task" class="outline-none border-2 border-slate-600 focus:border-amber-200 rounded-md py-2 px-4 text-xl bg-slate-800 md:min-w-xl">
 
             <button id="add-btn" class="border-2 border-slate-600 bg-slate-800 text-amber-200 p-3 rounded-full hover:border-amber-200 active:border-slate-600 flex justify-center items-center">
@@ -30,6 +30,34 @@
             </button>
         </div>
         <!-- add task container ends  -->
+
+        <!-- display tasks container starts  -->
+        <div class="empty-cont flex justify-center items-center border-2 border-slate-600 bg-slate-800 rounded-md px-4 w-full py-6 md:py-10">
+            <p class="text-2xl md:text-3xl font-semibold">No Tasks in Kram</p>
+        </div>
+
+        <div class="tasks-cont flex flex-col items-center justify-evenly w-full gap-2">
+
+            <div class="task flex items-center justify-center gap-2 md:gap-4 border-2 border-slate-600 bg-slate-800 px-2 md:px-4 py-2 w-full rounded-md">
+                <p class="task-text w-full text-lg">Go for a Walk</p>
+                <button class="edit-btn border-2 border-slate-600 bg-blue-600 text-gray-100 p-2 rounded-full hover:border-gray-100 active:border-slate-600 flex justify-center items-center text-lg"><i class="fa-solid fa-pencil"></i></button>
+                <button class="del-btn border-2 border-slate-600 bg-green-600 text-gray-100 p-2 rounded-full hover:border-gray-100 active:border-slate-600 flex justify-center items-center text-xl"><i class="fa-regular fa-circle-check"></i></button>
+            </div>
+
+            <div class="task flex items-center justify-center gap-2 md:gap-4 border-2 border-slate-600 bg-slate-800 px-2 md:px-4 py-2 w-full rounded-md">
+                <p class="task-text w-full text-lg">Go for a Walk</p>
+                <button class="edit-btn border-2 border-slate-600 bg-blue-600 text-gray-100 p-2 rounded-full hover:border-gray-100 active:border-slate-600 flex justify-center items-center text-lg"><i class="fa-solid fa-pencil"></i></button>
+                <button class="del-btn border-2 border-slate-600 bg-green-600 text-gray-100 p-2 rounded-full hover:border-gray-100 active:border-slate-600 flex justify-center items-center text-xl"><i class="fa-regular fa-circle-check"></i></button>
+            </div>
+
+            <div class="task flex items-center justify-center gap-2 md:gap-4 border-2 border-slate-600 bg-slate-800 px-2 md:px-4 py-2 w-full rounded-md">
+                <p class="task-text w-full text-lg">Go for a Walk</p>
+                <button class="edit-btn border-2 border-slate-600 bg-blue-600 text-gray-100 p-2 rounded-full hover:border-gray-100 active:border-slate-600 flex justify-center items-center text-lg"><i class="fa-solid fa-pencil"></i></button>
+                <button class="del-btn border-2 border-slate-600 bg-green-600 text-gray-100 p-2 rounded-full hover:border-gray-100 active:border-slate-600 flex justify-center items-center text-xl"><i class="fa-regular fa-circle-check"></i></button>
+            </div>
+
+            
+        </div>
     </main>
 
     <script src="script.js"></script>
