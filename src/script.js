@@ -13,6 +13,7 @@ const placeholders = [
 let inputTask = document.querySelector("#input-task");
 const addBtn = document.querySelector("#add-btn");
 const taskCont = document.querySelector(".tasks-cont");
+const emptyCont = document.querySelector(".empty-cont");
 
 let previous = -1;  // Previous index
 
@@ -28,6 +29,21 @@ setInterval(() => {
     inputTask.placeholder = placeholders[randIdx];
 }, 2500);
 
+
+// Function to toggle empty container
+const toggler = () => {
+    if (taskCont.childElementCount){
+        emptyCont.classList.remove("flex");
+        emptyCont.classList.add("hidden");
+    }
+    else{
+        emptyCont.classList.remove("hidden");
+        emptyCont.classList.add("flex");
+    }
+    // console.log(emptyCont.classList);
+}
+
+// toggler();
 
 // Function to add new task
 function addTask(t){
@@ -65,11 +81,8 @@ addBtn.addEventListener("click", () => {
     if(taskVal){
         addTask(taskVal);
         inputTask.value = "";
+        toggler();
     }
-    // else{
-    //     addTask("EMPTY");
-    //     inputTask.value = "";
-    // }
 });
 
 inputTask.addEventListener("keypress",(e) => {
@@ -78,10 +91,7 @@ inputTask.addEventListener("keypress",(e) => {
         if (taskVal){
             addTask(taskVal);
             inputTask.value = "";
+            toggler();
         }
-        // else{
-        //     addTask("EMPTY");
-        //     inputTask.value = "";
-        // }
         }
 });
