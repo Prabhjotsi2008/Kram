@@ -67,6 +67,13 @@ function addTask(t){
     const delBtn = document.createElement("button");
     delBtn.classList.add("del-btn", "border-2", "border-slate-600", "bg-green-600", "text-gray-100", "p-2", "rounded-full", "hover:border-gray-100", "active:border-slate-600", "flex", "justify-center", "items-center", "text-xl");
     delBtn.innerHTML = `<i class="fa-regular fa-circle-check"></i>`;
+
+    // AAM ZINDAGI
+    // delBtn.addEventListener("click", () => {
+    //     delBtn.parentElement.remove();
+    //     console.log(`Removed Task: ${delBtn.parentElement.firstChild.textContent}`);
+    // });
+
     task.appendChild(delBtn);
 
     // Adding the main container to task container
@@ -94,4 +101,16 @@ inputTask.addEventListener("keypress",(e) => {
             toggler();
         }
         }
+});
+
+// Function to delete task
+
+// Better way using event delegation
+taskCont.addEventListener("click", (e) => {
+    if(e.target.classList.contains("del-btn") || e.target.classList.contains("fa-circle-check")){
+        const task = e.target.closest(".task"); 
+        // const task = e.target.parentElement; // Less secure as it might delete the del-btn if icon is clicked
+        task.remove();
+        toggler();
+    }
 });
