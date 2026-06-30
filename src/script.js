@@ -45,6 +45,19 @@ const toggler = () => {
 
 // toggler();
 
+// Function to style the taskText
+function styler(taskText){
+    if (taskText.contentEditable === "true"){
+        taskText.classList.add("outline-none","border-b-2","border-amber-200");
+        // taskText.textContent = "";
+        // taskText.setAttribute("placeholder","Update Task...");
+    }
+    else{
+        taskText.classList.remove("outline-none","border-b-2","border-amber-200");
+        // taskText.removeAttribute("placeholder");
+    }
+}
+
 // Function to add new task
 function addTask(t){
     // Creating a task div
@@ -57,11 +70,25 @@ function addTask(t){
     taskText.appendChild(document.createTextNode(t));
     task.appendChild(taskText);
 
+    // taskText.addEventListener("keypress",(e) => {
+    //     if (e.key==="Enter"){
+    //         e.preventDefault();
+    //         taskText.contentEditable = taskText.contentEditable === "true" ? "false" : "true";
+    //         styler(taskText);
+    //     }
+    // })
+
     // Creating Edit Button
     const editBtn = document.createElement("button");
     editBtn.classList.add("edit-btn", "border-2", "border-slate-600", "bg-blue-600", "text-gray-100", "p-2", "rounded-full", "hover:border-gray-100", "active:border-slate-600", "flex", "justify-center", "items-center", "text-lg");
     editBtn.innerHTML = `<i class="fa-solid fa-pencil"></i>`;
     task.appendChild(editBtn);
+
+    // editBtn.addEventListener("click", () => {
+    //         taskText.contentEditable = "true";
+    //         taskText.focus();
+    //         styler(taskText);
+    // });
 
     // Creating Edit Button
     const delBtn = document.createElement("button");
@@ -103,14 +130,37 @@ inputTask.addEventListener("keypress",(e) => {
         }
 });
 
-// Function to delete task
 
 // Better way using event delegation
 taskCont.addEventListener("click", (e) => {
+    // Function to delete task
     if(e.target.classList.contains("del-btn") || e.target.classList.contains("fa-circle-check")){
         const task = e.target.closest(".task"); 
         // const task = e.target.parentElement; // Less secure as it might delete the del-btn if icon is clicked
         task.remove();
         toggler();
+    }
+
+    // Function for edit button
+    else if (e.target.classList.contains("edit-btn") || e.target.classList.contains("fa-pencil")){
+        const textVal = e.target.closest(".task").firstChild;
+        console.log(textVal);
+        textVal.contentEditable = "true";
+        textVal.focus();
+        styler(textVal);
+    }
+});
+
+
+// Function to confirm edit using ENTER key
+taskCont.addEventListener("keypress",(e) => {
+    if (e.target.classList.contains("task-text")){
+        if (e.key==="Enter"){
+            e.preventDefault();
+            const textVal = e.target;
+            // console.log(textVal);
+            textVal.contentEditable = textVal.contentEditable === "false" ? "true" : "false";
+            styler(textVal);
+        }
     }
 });
