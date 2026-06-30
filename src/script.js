@@ -144,7 +144,7 @@ taskCont.addEventListener("click", (e) => {
     // Function for edit button
     else if (e.target.classList.contains("edit-btn") || e.target.classList.contains("fa-pencil")){
         const textVal = e.target.closest(".task").firstChild;
-        console.log(textVal);
+        // console.log(textVal);
         textVal.contentEditable = "true";
         textVal.focus();
         styler(textVal);
